@@ -4,7 +4,7 @@ LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 
 RUN set -xe \
     && apt-get update \
-    && apt-get -y install wget libgtk2.0-dev build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev \
+    && apt-get -y install curl wget libgtk2.0-dev build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev \
     && export ROOT=`pwd` \
     && wget http://www.erlang.org/download/otp_src_22.0.tar.gz \
     && echo "da5e99d00b6349d51fb9ac8b033c87854fadff41  otp_src_22.0.tar.gz" | sha1sum -c - \
