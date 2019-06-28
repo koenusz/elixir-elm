@@ -22,7 +22,6 @@ RUN set -xe \
     && make install \
     && export PATH=/usr/local/bin:$PATH \
     && which wx-config && wx-config --version-full \
-    && export PATH=/usr/local/bin:$PATH \
     # make erlang
     && cd $ERL_TOP \
     && ./configure \
