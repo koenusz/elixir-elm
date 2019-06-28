@@ -23,6 +23,4 @@ RUN set -xe \
     && cd ..\
     && rm -rf elixir-${ELIXIR_VERSION} 
 
-
-
 CMD ["iex"]
