@@ -9,6 +9,7 @@ RUN set -xe \
     && wget http://www.erlang.org/download/otp_src_22.0.tar.gz \
     && echo "da5e99d00b6349d51fb9ac8b033c87854fadff41  otp_src_22.0.tar.gz" | sha1sum -c - \
     && tar -zxf otp_src_22.0.tar.gz \
+    && rm otp_src_22.0.tar.gz \
     && cd otp_src_22.0 \
     && export ERL_TOP=`pwd` \
     && cd $ROOT \
@@ -16,6 +17,7 @@ RUN set -xe \
     && wget https://github.com/wxWidgets/wxWidgets/releases/download/v3.1.2/wxWidgets-3.1.2.tar.bz2 \ 
     && echo "29cbbba946d2a7b4d28ca1db12315810cc8de74d  wxWidgets-3.1.2.tar.bz2" | sha1sum -c - \
     && tar -jxf wxWidgets-3.1.2.tar.bz2 \
+    && rm wxWidgets-3.1.2.tar.bz2 \
     && cd wxWidgets-3.1.2 \
     && ./configure --prefix=/usr/local --enable-compat28 \
     && make \
@@ -31,7 +33,12 @@ RUN set -xe \
     && cd release/tests/test_server \
     && $ERL_TOP/bin/erl -s ts install -s ts smoke_test batch -s init stop \
     && cd $ERL_TOP \
-    && make install 
+    && make install \
+    # cleanup
+    && cd $ROOT \
+    && rm -rf wxWidgets-3.1.2 \
+    && rm -rf otp_src_22.0
+
 
 
 CMD ["erl"]
@@ -50,3 +57,4 @@ RUN set -xe \
     && HOME=$PWD ./bootstrap \
     && install -v ./rebar3 /usr/local/bin/ \
     && rm -rf /usr/src/rebar3-src
+    # cleanup
