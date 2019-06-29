@@ -1,9 +1,6 @@
-FROM kjwvandijk:node
+FROM kjwvandijk/elixir-elm:npm
 
 LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
-
-
-ENV NODE_VERSION=11
 
 RUN set xe \
     && npm install elm -g
