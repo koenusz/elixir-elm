@@ -2,7 +2,7 @@ FROM kjwvandijk/elixir-elm:erlang
 
 LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 
-ENV ELIXIR_VERSION=1.9.0
+ENV ELIXIR_VERSION=1.9.4
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y locales \
@@ -19,8 +19,6 @@ RUN set -xe \
     && rm v${ELIXIR_VERSION}.tar.gz \
     && cd elixir-${ELIXIR_VERSION} \
     && make \
-    && export PATH=`pwd`/bin:$PATH \
-    && cd ..\
-    && rm -rf elixir-${ELIXIR_VERSION} 
+    && echo '\ export PATH=`pwd`/bin:$PATH' >> ~/.profile
 
 CMD ["iex"]

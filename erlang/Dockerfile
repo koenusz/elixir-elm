@@ -2,15 +2,17 @@ FROM ubuntu:18.04
 
 LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 
+ENV ERLANG_VERSION=22.1
+
 RUN set -xe \
     && apt-get update \
     && apt-get -y install curl wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev \
     && export ROOT=`pwd` \
-    && wget http://www.erlang.org/download/otp_src_22.0.tar.gz \
-    && echo "da5e99d00b6349d51fb9ac8b033c87854fadff41  otp_src_22.0.tar.gz" | sha1sum -c - \
-    && tar -zxf otp_src_22.0.tar.gz \
-    && rm otp_src_22.0.tar.gz \
-    && cd otp_src_22.0 \
+    && wget http://www.erlang.org/download/otp_src_${ERLANG_VERSION}.tar.gz \
+    && echo "da5e99d00b6349d51fb9ac8b033c87854fadff41  otp_src_${ERLANG_VERSION}.tar.gz" | sha1sum -c - \
+    && tar -zxf otp_src_${ERLANG_VERSION}.tar.gz \
+    && rm otp_src_${ERLANG_VERSION}.tar.gz \
+    && cd otp_src_${ERLANG_VERSION} \
     && export ERL_TOP=`pwd` \
     && cd $ROOT \
     # make erlang
@@ -25,7 +27,7 @@ RUN set -xe \
     && make install \
     # cleanup
     && cd $ROOT \
-    && rm -rf otp_src_22.0
+    && rm -rf otp_src_${ERLANG_VERSION}
 
 
 
