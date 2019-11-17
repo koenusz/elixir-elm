@@ -19,6 +19,6 @@ RUN set -xe \
     && rm v${ELIXIR_VERSION}.tar.gz \
     && cd elixir-${ELIXIR_VERSION} \
     && make \
-    && echo '\ export PATH=`pwd`/bin:$PATH' >> ~/.profile
+    && echo "export PATH=`pwd`/bin:$PATH" >> ~/.profile
 
 CMD ["iex"]
