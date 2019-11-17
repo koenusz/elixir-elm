@@ -19,6 +19,9 @@ RUN set -xe \
     && rm v${ELIXIR_VERSION}.tar.gz \
     && cd elixir-${ELIXIR_VERSION} \
     && make \
-    && echo "export PATH=`pwd`/bin:$PATH" >> ~/.profile
+    && ln -s /elixir-${ELIXIR_VERSION}/bin/mix /usr/local/bin/mix \
+    && ln -s /elixir-${ELIXIR_VERSION}/bin/iex /usr/local/bin/iex \
+    && ln -s /elixir-${ELIXIR_VERSION}/bin/elixir /usr/local/bin/elixir \
+    && ln -s /elixir-${ELIXIR_VERSION}/bin/elixirc /usr/local/bin/elixirc 
 
-CMD ["iex"]
+CMD ["/bin/bash"]
