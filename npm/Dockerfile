@@ -9,4 +9,4 @@ RUN set xe \
     && apt-get update \
     && apt-get install -y npm
 
-CMD [ "npm" ]
+CMD [ "/bin/bash" ]

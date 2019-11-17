@@ -5,4 +5,4 @@ LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 RUN set xe \
     && npm install elm -g
 
-CMD ["elm"]
+CMD ["/bin/bash"]
