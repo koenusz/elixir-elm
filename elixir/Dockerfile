@@ -24,4 +24,7 @@ RUN set -xe \
     && ln -s /elixir-${ELIXIR_VERSION}/bin/elixir /usr/local/bin/elixir \
     && ln -s /elixir-${ELIXIR_VERSION}/bin/elixirc /usr/local/bin/elixirc 
 
+RUN mix local.hex --force
+RUN mix local.rebar --force
+
 CMD ["/bin/bash"]
