@@ -2,12 +2,11 @@ FROM kjwvandijk/elixir-elm:elixir
 
 LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 
-
 ENV NODE_VERSION=12
 
-RUN apt-get install  nodejs-dev node-gyp libssl1.0-dev
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN set xe \
-    && apt-get update \
-    && apt-get install -y npm
+    && apt update \
+    && apt install -y nodejs
 
 CMD [ "/bin/bash" ]
