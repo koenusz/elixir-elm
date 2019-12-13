@@ -8,7 +8,7 @@ RUN apt-get update \
     && apt-get install -y curl git \
     && apt-get -y autoclean
 
-ENV PATH="${PATH}:/usr/lib/asdf/shims:/usr/lib/asdf/bin"
+ENV PATH="${PATH}:/root/.asdf/shims:/usr/lib/asdf/bin"
 ENV NODE_VERSION 12.13.1
 ENV ELM_VERSION 0.19.1
 
