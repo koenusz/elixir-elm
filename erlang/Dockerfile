@@ -3,14 +3,11 @@ FROM ubuntu:20.04
 LABEL maintainer="Koen van Dijk <kjw.vandijk@gmail.com>"
 
 ENV ERLANG_VERSION=23.1 \
-    ERLANG_SHA1="21a76dce89882c2ee43f256e3594f17573a0d412" \
-    TZ=Europe/Amsterdam
-
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
+    ERLANG_SHA1="21a76dce89882c2ee43f256e3594f17573a0d412" 
+    
 RUN set -xe \
     && apt-get update \
-    && apt-get -y install curl wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev \
+    && DEBIAN_FRONTEND=noninteractive apt-get -y install curl wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev \
     && export ROOT=`pwd` \
     && wget http://www.erlang.org/download/otp_src_${ERLANG_VERSION}.tar.gz \
     && echo "${ERLANG_SHA1}  otp_src_${ERLANG_VERSION}.tar.gz" | sha1sum -c - \
