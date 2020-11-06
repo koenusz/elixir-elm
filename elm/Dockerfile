@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get -y autoclean
 
 ENV PATH="${PATH}:/root/.asdf/shims:/usr/lib/asdf/bin"
-ENV NODE_VERSION 12.13.1
+ENV NODE_VERSION 14.15.0
 ENV ELM_VERSION 0.19.1
 
 
